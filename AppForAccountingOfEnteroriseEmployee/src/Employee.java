@@ -21,7 +21,7 @@ public class Employee {
         return  "id = " + id +
                 ", name is " + name +
                 ", age = " + age +
-                ", salary = " + salary +
+                ", salary = " + String.format("%.2f", salary)+
                 ", gender = " + gender;
     }
 }

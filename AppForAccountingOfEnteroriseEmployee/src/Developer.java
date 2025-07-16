@@ -24,7 +24,7 @@ public class Developer extends Employee{
         return "Developer {" +
                 super.toString() +
                 ", fixedBugs = " + fixedBugs +
-                ", totalSalary = " + getTotalSalary() +
+                ", totalSalary = " + String.format("%.2f", getTotalSalary()) +
                 "}";
     }
 }

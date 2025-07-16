@@ -21,7 +21,7 @@ public class Designer extends Employee{
                 super.toString() +
                 ", rate = " + rate +
                 ", workerDay" + workerDay +
-                ", totalSalary = " + getTotalSalary() +
+                ", totalSalary = " + String.format("%.2f", getTotalSalary()) +
                 "}";
     }
 }
