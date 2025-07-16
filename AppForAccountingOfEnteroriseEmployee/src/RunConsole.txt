@@ -1,0 +1,6 @@
+===== Generate random employee by size =====
+Manager: id = 1, name is Jessica, age = 22, salary = 1889,75, gender = Female, totalSalary = 1889,75
+Developer: id = 2, name is Mary, age = 30, salary = 5175,26, gender = Female, fixedBugs =  49, totalSalary = 5175,26
+Manager: id = 3, name is Thomas, age = 28, salary = 2527,34, gender = Male, totalSalary = 2527,34
+Developer: id = 4, name is William, age = 25, salary = 0,00, gender = Male, fixedBugs =  107, totalSalary = 0,00
+Manager: id = 5, name is Mary, age = 26, salary = 2272,26, gender = Female, totalSalary = 2272,26
