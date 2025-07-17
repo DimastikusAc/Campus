@@ -79,4 +79,9 @@ public class ArrayQueue implements Queue{
         front = 0;
         end = 0;
     }
+
+    @Override
+    public String toString(){
+        return "[" + array[0] + ", " + array[1] + ", " + array[2] + "]";
+    }
 }

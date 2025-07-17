@@ -106,4 +106,15 @@ public class ArrayQueueTest {
         });
     }
 
+    @Test
+    public void testToStringReturnsFormattedQueueContents() {
+        ArrayQueue arrayQueue = new ArrayQueue();
+        arrayQueue.enqueue("A");
+        arrayQueue.enqueue("B");
+        arrayQueue.enqueue("C");
+        assertEquals(3, arrayQueue.size());
+
+        assertEquals("[A, B, C]", arrayQueue.toString());
+    }
+
 }
