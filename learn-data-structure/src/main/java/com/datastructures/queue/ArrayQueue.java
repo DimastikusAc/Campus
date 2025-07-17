@@ -1,6 +1,6 @@
 package com.datastructures.queue;
 
-public class ArrayQueue implements Queue{
+public class ArrayQueue implements Queue {
     private int size;
     private int front;
     private int end;
@@ -19,9 +19,9 @@ public class ArrayQueue implements Queue{
     }
 
     private void ensureCapacity() {
-        // Поскольку size может меняться из-за удаления и добавления, а end остается последним
-        // значением, поэтом end:
-        if (end == array.length){
+        // Поскольку size может меняться из-за удаления и добавления, а end следующая
+        // пустая ячейка, поэтом end:
+        if (end == array.length) {
             Object[] newArrayQueue = new Object[array.length * 2];
             for (int i = 0; i < array.length; i++) {
                 newArrayQueue[i] = array[i];
@@ -61,7 +61,7 @@ public class ArrayQueue implements Queue{
     @Override
     public boolean contains(Object value) {
         for (int i = front; i < end; i++) {
-            if(array[i].equals(value)){
+            if ((value == null && array[i] == null) || (array[i] != null  && array[i].equals(value))){
                 return true;
             }
         }
@@ -81,7 +81,14 @@ public class ArrayQueue implements Queue{
     }
 
     @Override
-    public String toString(){
-        return "[" + array[0] + ", " + array[1] + ", " + array[2] + "]";
+    public String toString() {
+        String string = "";
+        for (int i = front; i < end; i++) {
+            string = string + array[i];
+            if (i < end - 1) {
+                string = string + ", ";
+            }
+        }
+        return "[" + string + "]";
     }
 }
