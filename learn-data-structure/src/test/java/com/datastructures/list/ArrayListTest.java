@@ -57,7 +57,7 @@ public class ArrayListTest {
     @Test
     public void testThrowIndexOutOfBoundsExceptionWhenIndexIsGreaterThanSize() {
         ArrayList arrayList = new ArrayList();
-        arrayList.add("A", 0);
+        arrayList.add("A", 0000000000);
         arrayList.add("B", 1);
         assertEquals(2, arrayList.size());
 
