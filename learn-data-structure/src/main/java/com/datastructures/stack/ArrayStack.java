@@ -1,6 +1,8 @@
 package com.datastructures.stack;
 
-public class ArrayStack implements Stack {
+import java.util.Iterator;
+
+public class ArrayStack implements Stack, Iterable{
     private int size;
     private Object[] array;
 
@@ -48,7 +50,7 @@ public class ArrayStack implements Stack {
     public boolean contains(Object value) {
         for (int i = 0; i < size; i++) {
             Object valueInStack = array[i];
-            if(valueInStack.equals(value)) {
+            if((valueInStack ==null && value == null) || (value != null && valueInStack.equals(value))) {
                 return true;
             }
         }
@@ -69,4 +71,27 @@ public class ArrayStack implements Stack {
     public void clear() {
         size = 0;
     }
+
+    @Override
+    public Iterator iterator() {
+        return new StackIterator();
+    }
+
+    private class StackIterator implements Iterator {
+        private int index = size - 1;
+
+        @Override
+        public boolean hasNext() {
+            return index >= 0;
+        }
+
+        @Override
+        public Object next() {
+            Object value = array[index];
+            index--;
+            return value;
+        }
+    }
+
+
 }

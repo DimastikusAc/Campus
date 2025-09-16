@@ -1,15 +1,22 @@
 package com.datastructures.stack;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayStackTest {
-
+    ArrayStack arrayStack;
+    
+    @BeforeEach
+    public void before(){
+        arrayStack = new ArrayStack();
+    }
     @Test
     public void testPushAndPopWorkCorrectlyAndChangeSize() {
-        ArrayStack arrayStack = new ArrayStack();
         arrayStack.push("A");
         arrayStack.push("B");
 
@@ -23,7 +30,7 @@ public class ArrayStackTest {
 
     @Test
     public void testPushOverInitialCapacityAndPopWorkCorrectlyAndChangeSize() {
-        ArrayStack arrayStack = new ArrayStack(2);
+        arrayStack = new ArrayStack(2);
         arrayStack.push("A");
         arrayStack.push("B");
         arrayStack.push("C");
@@ -38,7 +45,7 @@ public class ArrayStackTest {
 
     @Test
     public void testPushAndPeek() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         arrayStack.push("A");
         arrayStack.push("B");
 
@@ -50,12 +57,12 @@ public class ArrayStackTest {
 
     @Test
     public void testIsEmptyReturnTrueOnNewStack() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         assertTrue(arrayStack.isEmpty());
     }
     @Test
     public void testIsEmptyReturnFalseOnStackWithData() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         arrayStack.push("A");
         arrayStack.push("B");
         assertFalse(arrayStack.isEmpty());
@@ -63,7 +70,7 @@ public class ArrayStackTest {
 
     @Test
     public void testIsEmptyReturnTrueOnStackAfterClear() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         arrayStack.push("A");
         arrayStack.push("B");
         arrayStack.clear();
@@ -72,7 +79,7 @@ public class ArrayStackTest {
 
     @Test
     public void testContainsReturnTrue() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         arrayStack.push("A");
         arrayStack.push("B");
         assertTrue(arrayStack.contains(new String("A")));
@@ -81,7 +88,7 @@ public class ArrayStackTest {
 
     @Test
     public void testContainsReturnFalse() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         arrayStack.push("A");
         arrayStack.push("B");
         assertFalse(arrayStack.contains("C"));
@@ -89,15 +96,40 @@ public class ArrayStackTest {
 
     @Test
     public void testContainsReturnFalseOnEmptyStack() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         assertFalse(arrayStack.contains("C"));
     }
 
     @Test
     public void testThrowIllegalStateExceptionPopOnEmptyStack() {
-        ArrayStack arrayStack = new ArrayStack();
+        
         Assertions.assertThrows(IllegalStateException.class, () -> {
             arrayStack.pop();
         });
+    }
+
+    @Test
+    public void testStackIteratorImplementation(){
+        arrayStack.push("A");
+        arrayStack.push("B");
+        arrayStack.push("C");
+        assertEquals(3, arrayStack.size());
+
+        Iterator iterator = arrayStack.iterator();
+
+        assertTrue(iterator.hasNext());
+        assertEquals("C", iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals("B", iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals("A", iterator.next());
+
+        assertFalse(iterator.hasNext());
+
+        while (iterator.hasNext()){
+            Object nextValue = iterator.next();
+            System.out.println(nextValue);
+        }
+
     }
 }
