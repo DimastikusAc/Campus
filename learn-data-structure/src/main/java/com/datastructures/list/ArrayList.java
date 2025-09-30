@@ -20,7 +20,7 @@ public class ArrayList implements List{
 
     @Override
     public void add(Object value) {
-        ensureGrow();
+        ensureCapacityAndGrowIfNeeded();
         add(value, size);
     }
 
@@ -30,7 +30,7 @@ public class ArrayList implements List{
             throw new IndexOutOfBoundsException("Index must be between 0 and " + size);
         }
 
-        ensureGrow();
+        ensureCapacityAndGrowIfNeeded();
         for (int i = size; i > index; i--) {
             array[i] = array[i - 1];
         }
@@ -124,7 +124,7 @@ public class ArrayList implements List{
         return stringJoiner.toString();
     }
 
-    private void ensureGrow() {
+    private void ensureCapacityAndGrowIfNeeded() {
         if (size == array.length) {
             Object[] newArray = new Object[(int) (array.length * 1.5)];
             for (int i = 0; i < array.length; i++) {

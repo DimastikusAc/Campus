@@ -154,6 +154,7 @@ public abstract class AbstractListTest {
         list.clear();
 
         assertTrue(list.isEmpty());
+        assertEquals(0, list.size());
     }
 
     @DisplayName("test contains returns True")
@@ -194,9 +195,12 @@ public abstract class AbstractListTest {
         
         list.add("A", 0);
         list.add("B", 1);
-        list.add("A", 2);
-        list.add("D", 3);
-        assertEquals(2, list.lastIndexOf("A"));
+        list.add(null, 2);
+        list.add("A", 3);
+        list.add("D", 4);
+        assertEquals(3, list.lastIndexOf("A"));
+        assertEquals(null, list.get(2));
+        assertEquals(-1, list.indexOf("C"));
 
     }
 

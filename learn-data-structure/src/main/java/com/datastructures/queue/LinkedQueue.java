@@ -68,6 +68,7 @@ public class LinkedQueue implements Queue{
         head = null;
         size = 0;
     }
+
     @Override
     public String toString() {
         StringJoiner stringJoiner = new StringJoiner(", ", "[", "]");
@@ -77,5 +78,14 @@ public class LinkedQueue implements Queue{
             current = current.next;
         }
         return  stringJoiner.toString();
+    }
+
+    public class Node {
+        Object value;
+        Node next;
+
+        public Node(Object value) {
+            this.value = value;
+        }
     }
 }

@@ -161,7 +161,7 @@ public class LinkedList implements List {
         StringJoiner stringJoiner = new StringJoiner(", ", "[", "]");
         Node current = head;
         for (int i = 0; i < size; i++) {
-            stringJoiner.add(current.value.toString());
+            stringJoiner.add(String.valueOf(current.value));
             current = current.next;
         }
         return stringJoiner.toString();
@@ -181,6 +181,16 @@ public class LinkedList implements List {
             }
         }
         return current;
+    }
+
+    public class Node {
+        Node next;
+        Node prev;
+        Object value;
+
+        public Node(Object value){
+            this.value = value;
+        }
     }
 
     @Override
